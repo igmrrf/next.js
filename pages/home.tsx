@@ -32,6 +32,7 @@ const Home = () => {
     const temp = await fetch("https://api.jikan.moe/v4/top/anime").then((res) =>
       res.json()
     );
+
     console.log({ temp, data: temp.data });
     setTopAnime(temp.data.slice(0, 5));
     setAnimeList(temp.data.slice(6));

@@ -1,5 +1,7 @@
+import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect } from "react";
 import { PaystackButton, usePaystackPayment } from "react-paystack";
 import Dater from "../components/date";
 import Layout, { siteTitle } from "../components/Layout";
@@ -23,10 +25,11 @@ const pages = [
   },
   {
     id: "2",
-    title: "Alert",
-    url: "/alert",
-    description: "The alert that's not alert",
+    title: "Sequence",
+    url: "/sequence",
+    description: "This The Sequence Implementation",
   },
+
   {
     id: "3",
     title: "news",
@@ -56,6 +59,12 @@ const pages = [
     title: "StarWars",
     url: "/starwars",
     description: "The StarWars that's not StarWars",
+  },
+  {
+    id: "8",
+    title: "Alert",
+    url: "/alert",
+    description: "The alert that's not alert",
   },
 ];
 
@@ -98,7 +107,70 @@ const PaystackHookExample = () => {
     </div>
   );
 };
+
+const tryAPI = async () => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      business: {
+        name: "Fraanc",
+        type: "individual",
+        state: "Bayelsa",
+        address: "Bayelsa",
+        country: "Bayelsa",
+      },
+      first_name: "Bayelsa",
+      last_name: "Bayelsa",
+      email: "Bayelsa@coinsandgiftsd2.com",
+      state: "Bayelsa",
+      address: "Bayelsa",
+      country: "Bayelsa",
+      password: "Bayelsa01@",
+    }),
+  };
+  const tryingMyAPI = await fetch(
+    "https://send-rail-api-production.up.railway.app/v1/auth/signup",
+    options
+  ).then((res) => res.json());
+  console.log({ tryingMyAPI });
+};
 export default function Home({ data }) {
+  useEffect(() => {
+    const tryAPI = async () => {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: {
+          business: {
+            name: "Fraanc",
+            type: "individual",
+            state: "Bayelsa",
+            address: "Bayelsa",
+            country: "Bayelsa",
+          },
+          first_name: "Bayelsa",
+          last_name: "Bayelsa",
+          email: "Bayelsa@coinsadndgidftsd2.com",
+          state: "Bayelsa",
+          address: "Bayelsa",
+          country: "Bayelsa",
+          password: "Bayelsa01@",
+        },
+      };
+      const tryingMyAPI = await axios.post(
+        "https://send-rail-api-production.up.railway.app/v1/auth/signup",
+        options.body
+      );
+
+      console.log({ tryingMyAPI });
+    };
+    tryAPI();
+  }, []);
   return (
     <Layout home>
       <Head>

@@ -7,7 +7,7 @@ import styles from "./layout.module.css";
 const name = "The L D O";
 export const siteTitle = "Next.js Sample Application";
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home = false }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -49,8 +49,8 @@ export default function Layout({ children, home }) {
               />
             </Link>
             <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+              <Link href="/" className={utilStyles.colorInherit}>
+                {name}
               </Link>
             </h2>
           </>
